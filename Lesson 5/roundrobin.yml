@@ -1,0 +1,13 @@
+- name: Reconfigure NGINX config
+  become: true
+  hosts: all
+  vars:
+    terraform1: "{{ terraform1 }}"
+    terraform2: "{{ terraform2 }}"
+  tasks:
+    - name: replace nginx default conf
+      template:
+        src: roundrobin.conf.tpl
+        dest: /etc/nginx/sites-enabled/default
+    - name: restart nginx
+      service: name=nginx state=restarted

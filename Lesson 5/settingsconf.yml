@@ -1,0 +1,33 @@
+- name: Reconfigure settings.py
+  become: true
+  hosts: all
+  vars:
+    selfip: "{{ selfip }}"
+    nginx: "{{ nginx }}"
+    postgresql: "{{ postgresql }}"
+  tasks:
+    - name: replace settings.py config
+      template:
+        src: settings.py.tpl
+        dest: /home/ubuntu/myproject/myproject/settings.py
+    - name: create systemd unit file
+      copy:
+        src: django.service
+        dest: /lib/systemd/system/django.service
+    - name: Reload the system configureation (registers new unit)
+      shell: systemctl daemon-reload
+    - name: start server django
+      systemd:
+        name: django.service
+        enabled: true
+        state: started
+    - name: Migrate django
+      shell: /usr/bin/python3 /home/ubuntu/myproject/manage.py migrate
+      become: yes
+      become_user: ubuntu
+    - name: Create superadmin
+      shell: DJANGO_SUPERUSER_PASSWORD=psw python3 /home/ubuntu/myproject/manage.py createsuperuser --username=admin --email=admin@admin.com --noinput
+      become: yes
+      become_user: ubuntu
+    # - name: sleep
+    #   shell: sleep 1

@@ -1,0 +1,4 @@
+---
+db_user: postgresuser
+db_password: postgrepass
+db_name: django
