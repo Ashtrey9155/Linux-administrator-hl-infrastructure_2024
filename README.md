@@ -26,11 +26,10 @@ High loading infrastructure in Linux system
 
 ```
 
-<details><summary>
-
-`Terraform скрипт`
-
-</summary>
+<details>
+	<summary>
+		Terraform скрипт
+	</summary>
 	
 ```
 В рабочем каталоге Терраформа в результате выполнения домашнего задания сформировалось следующее дерево
