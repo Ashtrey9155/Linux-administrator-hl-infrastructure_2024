@@ -4,7 +4,7 @@ High loading infrastructure in Linux system
 ## Оглавление
 
 - #### <a href="#hl-infrastructure-_-lesson-2"> Lesson #2 </a>
-- #### <a href="#lesson-5-nginx---балансировка-и-отказоустойчивость)"> Lesson #5 Nginx - балансировка и отказоустойчивость </a>
+- #### <a href="#lesson-5-nginx---балансировка-и-отказоустойчивость"> Lesson #5 Nginx - балансировка и отказоустойчивость </a>
 
 
 ## Lesson #2
